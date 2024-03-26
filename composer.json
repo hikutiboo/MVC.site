@@ -1,0 +1,19 @@
+{
+    "name": "viktor/mvc.site",
+    "type": "project",
+    "license": "Apache-2.0",
+    "autoload": {
+        "psr-4": {
+            "Viktor\\MvcSite\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "StartedIn22",
+            "email": "gerbviktor06@gmail.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^7.8"
+    }
+}
