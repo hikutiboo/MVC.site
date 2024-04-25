@@ -18,7 +18,7 @@ $title = $content = 'Error 404';
 $uri = $_SERVER['REQUEST_URI'];
 $badUrl = BASE_URL . 'index.php';
 
-if(str_starts_with($uri, $badUrl)){
+if(strpos($uri, $badUrl) === 0){
     $cname = 'Errors\E404';
 } else {
     $routes = include('routes.php');

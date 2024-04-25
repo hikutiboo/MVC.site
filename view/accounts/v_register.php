@@ -5,7 +5,7 @@
 <?php } ?>
 <form id="register_form" method="POST">
     <label for="username">Username: </label>
-    <input name="username" id="username" type="text" placeholder="Username">
+    <input name="login" id="username" type="text" placeholder="Username">
 
     <br><br>
 

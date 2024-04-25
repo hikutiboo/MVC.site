@@ -25,6 +25,18 @@ return (function(){
         [
             'regex' => '/^accounts\/register\/?$/',
             'controller' => 'Accounts\Register'
+        ],
+        [
+            'regex' => '/^accounts\/login\/?$/',
+            'controller' => 'Accounts\Login'
+        ],
+        [
+            'regex' => '/^accounts\/recover\/?$/',
+            'controller' => 'Accounts\Recover'
+        ],
+        [
+            'regex' => '/^terminal\/?$/',
+            'controller' => 'Terminal\Terminal'
         ]
     ];
 })();

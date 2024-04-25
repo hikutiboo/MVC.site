@@ -34,6 +34,77 @@ ul > li {
 	display: flow-root;
 }
 
-a {
+a:not(#forget_password) {
 	color: unset;
+}
+
+p {
+	padding: 0;
+	margin: 0;
+}
+
+#screenLocker {
+	width: 100%;
+	height: 100vh;
+	position: fixed;
+	left: 0;
+	top: 0;
+	background-color: rgba(0, 0, 0, 0.6);
+}
+
+.console-container {
+	width: 60%;
+	height: 80%;
+	padding: 25px 50px;
+	background-color: #e6e6e6;
+	border-radius: 20px;
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	display: flex;
+	flex-direction: column;
+	gap: 25px;
+}
+
+#consoleBody {
+	padding: 5px 5px;
+	height: 100%;
+	background-color: #000000;
+	border-color: #000000;
+	color: white;
+	overflow-y: scroll;
+}
+
+#prevConsoleLines {
+	color: #cccccc;
+}
+
+#commandLineContainer {
+	width: 100%;
+	display: flex;
+}
+
+#consoleLine {
+	width: max-content;
+	background-color: hsla(0, 0%, 0%, 0);
+	border: none;
+	color: white;
+	flex-grow: 1;
+}
+
+#consoleLine:focus {
+	outline: none;
+}
+
+.console-task {
+	color: deepskyblue;
+}
+
+.console-response {
+	color: greenyellow;
+}
+
+.console-empty {
+	color: transparent;
 }

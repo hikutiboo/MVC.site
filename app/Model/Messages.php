@@ -18,7 +18,7 @@ class Messages
 
     static function getMessage($connect, $id) : array {
         $queryString = sprintf("SELECT * FROM messages WHERE id = %s", $id);
-        $result_arr = mysqli_fetch_accos(mysqli_query($connect, $queryString));
+        $result_arr = mysqli_fetch_assoc(mysqli_query($connect, $queryString));
         return $result_arr ?? [];
     }
 

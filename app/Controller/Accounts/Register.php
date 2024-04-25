@@ -8,14 +8,16 @@ class Register extends \Controller\Controller
     {
         $formData = $_POST;
         $viewData = new \Model\ViewData();
-        $title = \Bootstrap::__('Register');
-        $error = \Model\Accounts::validateUser($formData);
+        $error = \Model\Accounts::registerValidate($formData);
 
         if ($error === false) {
-            \Model\Accounts::registerUser($formData);
+            \Model\Accounts::registerUser(\DBAdapter::getConnection(), $formData);
         }
 
-        $viewData->addData(['title'=>$title, 'error'=>$error]);
+        $viewData->addData([
+            'title' => \Bootstrap::__('Register'),
+            'error' => $error
+        ]);
         \Model\RenderHTMLPage::renderHTML(['view/accounts/v_register.php'], $viewData);
     }
 }
