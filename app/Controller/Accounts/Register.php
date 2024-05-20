@@ -12,6 +12,7 @@ class Register extends \Controller\Controller
 
         if ($error === false) {
             \Model\Accounts::registerUser(\DBAdapter::getConnection(), $formData);
+            header("Location: " . HOST . BASE_URL . "accounts/login");
         }
 
         $viewData->addData([

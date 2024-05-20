@@ -5,7 +5,7 @@ declare(strict_types=1);
  * @website: https://profstep.com
  **/
 
-return (function(){
+return (function () {
     $intGT0 = '[1-9]+\d*';
     $text = '[0-9aA-zZ_-]+';
 
@@ -29,6 +29,10 @@ return (function(){
         [
             'regex' => '/^accounts\/login\/?$/',
             'controller' => 'Accounts\Login'
+        ],
+        [
+            'regex' => '/^accounts\/logout\/?$/',
+            'controller' => 'Accounts\Logout'
         ],
         [
             'regex' => '/^accounts\/recover\/?$/',

@@ -6,15 +6,13 @@ class Add extends \Controller\Controller
 {
     static public function run()
     {
-
+        $data = $_POST;
+        $data['name'] = $_SESSION['user']['login'] ?? null;
         $viewData = new \Model\ViewData();
         $title = \Bootstrap::__('Add message');
-        $fieldsNotCleaned = $_POST;
         $neededFieldsArray = ['name', 'title', 'message'];
-
-        $fields = \Arr::extractFields($_POST, $neededFieldsArray);
-
-        $validateErrors = $_POST ? \Model\Messages::messagesValidate($fields) : [];
+        $fields = \Arr::extractFields($data, $neededFieldsArray);
+        $validateErrors = $_POST ? \Model\Messages::messagesValidate($fields, $_SESSION['user']['role'] ?? 0) : [];
 
         if (empty($validateErrors) and count($_POST)) {
             $result = \Model\Messages::setMessage(\DBAdapter::getConnection(), $fields);

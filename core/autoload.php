@@ -16,6 +16,6 @@ spl_autoload_register(
             }
         }
 
-        throw new Exception("class not found by this path \"$path\"");
+        throw new Exception(\Bootstrap::__("Class not found by this path \"") . $path . "\"");
     }
 );

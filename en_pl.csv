@@ -1,6 +1,43 @@
-Chat List|Lista czatów
-Message id|ID wiadomości
-User Name|Nazvisko
-Title|Tytuł
-Message|Wiadomość
-Created At|Utworzono w dniu
+Add message/&/Dodaj powiadomienie
+Add/&/Napisać
+Are you sure want to log out?/&/Czy naprawdę chcesz wylogować się z konta?
+Cancel/&/Anuluj
+Chat List/&/Lista powiadomień
+Class not found by this path \"/&/Nie znaleziono klas w podanej ścieżce: \”
+Confirm/&/Potwierdzić
+Contacts/&/Kontakty
+Created At/&/Data napisania
+Email field should not be empty!/&/Pole adresu e-mail nie może być puste!
+Email is not valid!/&/E-mail jest nieprawidłowy!
+Fields should not be empty/&/Pola nie mogą być puste!
+Home/&/Strona główna
+Log in to post messages!/&/Zaloguj się, aby wysyłać powiadomienia!
+Log in/&/Zalogować się
+Log out/&/Wylogować się
+Login field should not contain spaces!/&/Pole Login nie powinno zawierać spacji!
+Managers are not allowed to post messages!/&/Menedżer nie ma uprawnień do tworzenia powiadomienia!
+Maximal length for every field is 24 symbols (excepting email field)/&/Maksymalna długość każdego pola wynosi 24 symbole (z wyjątkiem pola e-mail)
+Message id/&/ID powiadomienia
+Message length must be not less then 2 characters!/&/Długość powiadomienia nie może być mniejsza niż 2 znaki!
+Message/&/Powiadomienie
+Minimal length for every field is 3 symbols/&/Minimalna długość każdego pola to 3 symbole
+Minimal length for password is 8 symbols/&/Minimalna długość hasła to 8 symboli
+Name must be from 2 to 140 chars!/&/Imię musi mieć od 2 do 140 znaków!
+Password is too short!/&/Hasło jest zbyt krótkie!
+Register/&/Rejestracja
+Role: /&/Rola:
+Save/&/Zapisz
+Something went wrong with your account!<br>Please wait, moderation will fix that as fast, as possible!/&/Wystąpił błąd krytyczny na Twoim koncie!<br>Prosimy o wyrozumiałość, ponieważ naprawimy to tak szybko, jak to możliwe!
+The message has been successfully added!/&/Powiadomienie zostało pomyślnie dodane!
+This email is already in use!/&/Ten adres e-mail jest już używany!
+Title must be from 10 to 140 chars!/&/Tytuł powinien zawierać od 10 do 140 znaków!
+Title/&/Tytuł
+User Name/&/Nazwa użytkownika
+User not found!/&/Nie znaleziono użytkownika!
+Username should not contain spaces/&/Nazwa użytkownika nie może zawierać spacji
+Wrong password!/&/Nieprawidłowe hasło!
+admin/&/administrator
+ field should not be empty!/&/ - to pole nie powinno być puste!
+ field value has wrong length!/&/ - to pole ma niepoprawną wartość długość!
+manager/&/menedżer
+user/&/użytkownik

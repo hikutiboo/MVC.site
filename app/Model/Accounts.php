@@ -11,12 +11,13 @@ class Accounts
         }
 
         foreach ($userData as $key => $value) {
+            echo !trim($value);
             if (!trim($value)) {
-                return \Bootstrap::__(ucfirst($key) . " field should not be empty!");
+                return ucfirst($key) . \Bootstrap::__(" field should not be empty!") . __LINE__;
             }
 
             if ((mb_strlen($value) < 3 || mb_strlen($value) > 24) && $key !== 'email' && $key !== 'role') {
-                return \Bootstrap::__(ucfirst($key) . " field value has wrong length!");
+                return ucfirst($key) . \Bootstrap::__(" field value has wrong length!");
             }
         }
 
@@ -32,27 +33,48 @@ class Accounts
             return \Bootstrap::__("Email is not valid!");
         }
 
-        if (\Model\Accounts::emailRepetition(\DBAdapter::getConnection(), $userData['email'])) {
-            return \Bootstrap::__("Email already exists!");
+        $emailRepetitions = \Model\Accounts::emailRepetition(\DBAdapter::getConnection(), $userData['email']);
+        if (sizeof($emailRepetitions)) {
+            return \Bootstrap::__("This email is already in use!");
         }
 
         return false;
     }
 
-    static public function loginValidate(array $formData): bool|string
+    static public function loginValidate(array $userData): bool|string
     {
-        if (trim($formData['email']) == '') {
-            return \Bootstrap::__("No empty fields allowed!");
+        $email = $userData['email'];
+
+        if (trim($email) == '') {
+            return \Bootstrap::__("Email field should not be empty!");
         }
 
-        if (!filter_var($formData['email'], FILTER_VALIDATE_EMAIL)) {
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             return \Bootstrap::__("Email is not valid!");
         }
 
+        $emailRepetitions = \Model\Accounts::emailRepetition(\DBAdapter::getConnection(), $email);
+        if (sizeof($emailRepetitions) < 1) {
+            return \Bootstrap::__("User not found!");
+        }
+
+        if (sizeof($emailRepetitions) > 1) {
+            # TODO: log about double email
+            return
+                \Bootstrap::__(
+                    "Something went wrong with your account!<br>Please wait, moderation will fix that as fast, as possible!"
+                );
+        }
+
         return false;
     }
 
-    static public function emailRepetition(\mysqli $connect, string $email): bool
+    static public function loginError(array $userData, string $password): bool|string
+    {
+        return password_verify($password, $userData['password']) ? false : \Bootstrap::__("Wrong password!");
+    }
+
+    static public function emailRepetition(\mysqli $connect, string $email): array
     {
         $usernameStmt = mysqli_prepare($connect, "SELECT * FROM users WHERE email = ?");
         mysqli_stmt_bind_param($usernameStmt, "s", $email);
@@ -64,7 +86,7 @@ class Accounts
             $requestResult[] = $item;
         }
 
-        return (bool)sizeof($requestResult);
+        return $requestResult;
     }
 
     static public function registerUser(\mysqli $connect, array $userData): void

@@ -1,7 +1,17 @@
 <?php
-session_start();
+$role = setRole();
 
-$currentUser = $_SESSION['currentUser'] ?? [];
+function setRole(): string
+{
+    if (!array_key_exists("role", $_SESSION['user'])) return '';
+
+    return match ($_SESSION["user"]['role']) {
+        1 => 'admin',
+        2 => 'manager',
+        3 => 'user',
+        default => '',
+    };
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,9 +22,9 @@ $currentUser = $_SESSION['currentUser'] ?? [];
     <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/main.css">
 </head>
 <body>
-<?php //if($_SESSION['role'] === 1) { ?>
+<?php if (key_exists('login', $_SESSION['user'] ?: []) && $_SESSION["user"]["role"] === 1) { ?>
     <script src="<?= BASE_URL ?>assets/js/adminConsole.js"></script>
-<?php //} ?>
+<?php } ?>
 <header class="site-header">
     <div class="container d-flex justify-content-between align-items-center">
         <div class="logo">
@@ -22,16 +32,24 @@ $currentUser = $_SESSION['currentUser'] ?? [];
             <div class="logo__subtitle h6">About MVC</div>
         </div>
         <div class="account">
-            <?php if (key_exists('username', $viewData->getData('currentUser') ?: [])) { ?>
-                <div class="logo__title h3"><?= $viewData->getData('currentUser')['username'] ?? '' ?></div>
-                <div class="logo__subtitle h6"><?= Bootstrap::__(${$viewData->getData('currentUser')['role'] ?? ''}) ?></div>
+            <?php if (key_exists('login', $_SESSION['user'] ?: [])) { ?>
+                <div class="logo__title h3">
+                    <?= $_SESSION['user']["login"] ?? '' ?>
+                    <a href="<?= BASE_URL ?>accounts/logout" class="btn btn-danger" id="logout">
+                        <?= \Bootstrap::__("Log out") ?>
+                    </a>
+                </div>
+                <div class="logo__subtitle h6">
+                    <?= \Bootstrap::__("Role: ") .
+                        \Bootstrap::__($role ?? '') ?>
+                </div>
             <?php } else { ?>
                 <div class="buttons">
                     <button type="button" class="btn btn-outline-light">
-                        <a href="<?= BASE_URL ?>accounts/login"><?= Bootstrap::__('Log in') ?></a>
+                        <a href="<?= BASE_URL ?>accounts/login"><?= \Bootstrap::__('Log in') ?></a>
                     </button>
                     <button type="button" class="btn btn-danger">
-                        <a href="<?= BASE_URL ?>accounts/register"><?= Bootstrap::__('Register') ?></a>
+                        <a href="<?= BASE_URL ?>accounts/register"><?= \Bootstrap::__('Register') ?></a>
                     </button>
                 </div>
             <?php } ?>

@@ -14,11 +14,11 @@
 
     <button type="submit">Log in</button>
 
-    <br><br>
-
-    <p class="forgetPasswordRow">
-        Forgot your password? Click <a href="forgetPassword.html" id="forget_password">here</a> to recover it!
-    </p>
+<!--    <br><br>-->
+<!---->
+<!--    <p class="forgetPasswordRow">-->
+<!--        Forgot your password? Click <a href="forgetPassword.html" id="forget_password">here</a> to recover it!-->
+<!--    </p>-->
 
     <p id="result"></p>
 </form>

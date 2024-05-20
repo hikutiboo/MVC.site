@@ -7,6 +7,13 @@ body {
 	margin-bottom: 60px;
 }
 
+.container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
 .site-footer {
 	position: absolute;
 	bottom: 0;
@@ -107,4 +114,10 @@ p {
 
 .console-empty {
 	color: transparent;
+}
+
+.logout-confirm-container {
+	display: flex;
+	flex-direction: row;
+	gap: 10px;
 }

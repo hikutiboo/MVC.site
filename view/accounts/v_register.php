@@ -28,11 +28,11 @@
 
     <p><b>Rules:</b></p>
     <ul>
-        <li>Fields should not be empty</li>
-        <li>Minimal length for every field is 3 symbols</li>
-        <li>Maximal length for every field is 24 symbols (excepting email field)</li>
-        <li>Username should not contain spaces</li>
-        <li>Minimal length for password is 8 symbols</li>
+        <li><?= \Bootstrap::__("Fields should not be empty") ?></li>
+        <li><?= \Bootstrap::__("Minimal length for every field is 3 symbols") ?></li>
+        <li><?= \Bootstrap::__("Maximal length for every field is 24 symbols (excepting email field)") ?></li>
+        <li><?= \Bootstrap::__("Username should not contain spaces") ?></li>
+        <li><?= \Bootstrap::__("Minimal length for password is 8 symbols") ?></li>
     </ul>
 
     <button type="submit">Register</button>

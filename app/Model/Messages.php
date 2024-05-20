@@ -7,41 +7,60 @@ namespace Model;
  * @by ProfStep, inc. 23.12.2020
  * @website: https://profstep.com
  **/
-
 class Messages
 {
-    static function getMessages($connect) : array {
-        $queryString = "SELECT * FROM messages WHERE 1";
-        $result_arr = mysqli_fetch_all(mysqli_query($connect, $queryString),MYSQLI_ASSOC);
+    static function getMessages($connect): array
+    {
+        $queryString = "SELECT * FROM messages WHERE is_deleted = 0";
+        $result_arr = mysqli_fetch_all(mysqli_query($connect, $queryString), MYSQLI_ASSOC);
         return $result_arr ?? [];
     }
 
-    static function getMessage($connect, $id) : array {
+    static function getMessage($connect, $id): array
+    {
         $queryString = sprintf("SELECT * FROM messages WHERE id = %s", $id);
         $result_arr = mysqli_fetch_assoc(mysqli_query($connect, $queryString));
         return $result_arr ?? [];
     }
 
-    static function setMessage($connect, $fields) : bool {
+    static function setMessage($connect, $fields): bool
+    {
 
-        $queryString = sprintf("INSERT into messages VALUES (null, '%s', '%s', '%s', now(), '0')", $fields['name'], $fields['title'], $fields['message']);
+        $queryString = sprintf(
+            "INSERT into messages VALUES (null, '%s', '%s', '%s', now(), '0', '0')",
+            $fields['name'],
+            $fields['title'],
+            $fields['message']
+        );
         $result = mysqli_query($connect, $queryString) or die(mysqli_error($connect));
-        return is_bool($result)? $result : false;
+        return is_bool($result) ? $result : false;
     }
 
-    static function messagesValidate(array &$fields) : array{
+    static function messagesValidate(array &$fields, int $role): array
+    {
         $errors = [];
         $nameLen = mb_strlen($fields['name'], 'UTF-8');
         $titleLen = mb_strlen($fields['title'], 'UTF-8');
 
-        if(mb_strlen($fields['message'], 'UTF-8') < 2){
+        if ($role === 2) {
+            $errors[] = \Bootstrap::__('Managers are not allowed to post messages!');
+            return $errors;
+        }
+
+        if ($role === 0) {
+            $errors[] = \Bootstrap::__('Log in to post messages!');
+            return $errors;
+        }
+
+        if (mb_strlen($fields['message'], 'UTF-8') < 2) {
             $errors[] = \Bootstrap::__('Message length must be not less then 2 characters!');
         }
 
-        if($nameLen < 2 || $nameLen > 140){
+        if ($nameLen < 2 || $nameLen > 140) {
             $errors[] = \Bootstrap::__('Name must be from 2 to 140 chars!');
         }
-        if($titleLen < 10 || $titleLen > 140){
+
+        if ($titleLen < 10 || $titleLen > 140) {
             $errors[] = \Bootstrap::__('Title must be from 10 to 140 chars!');
         }
 
@@ -50,5 +69,12 @@ class Messages
         $fields['message'] = htmlspecialchars($fields['message']);
 
         return $errors;
+    }
+
+    static public function deleteMessage(\mysqli $connect, int $id): void
+    {
+        $queryStmt = mysqli_prepare($connect, "UPDATE messages SET is_deleted = 1 WHERE id = ?");
+        mysqli_stmt_bind_param($queryStmt, "i", $id);
+        mysqli_stmt_execute($queryStmt);
     }
 }

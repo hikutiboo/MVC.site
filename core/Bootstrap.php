@@ -12,7 +12,7 @@ class Bootstrap
         $ln = $_GET['ln'] ?? false;
         $file = "en_$ln.csv";
 
-        if($ln && $_SESSION['ln'] != $ln || !isset($_SESSION['translate'])) {
+        if($ln && isset($_SESSION['ln']) && $_SESSION['ln'] != $ln || !isset($_SESSION['translate'])) {
             if(file_exists($file)) {
                 $_SESSION['ln'] = $ln;
                 $_SESSION['translate'] = file($file);
@@ -23,11 +23,11 @@ class Bootstrap
 
         if(isset($_SESSION['translate']) && is_array($_SESSION['translate'])) {
             foreach ($_SESSION['translate'] as $line) {
-                if(strpos($line, $string."|") === 0) {
-                    return explode("|", $line)[1] ?? $string;
+                if(strpos($line, $string."/&/") === 0) {
+                    return explode("/&/", $line)[1] ?? $string;
                 }
             }
-            //file_put_contents('translate.log', $string.PHP_EOL , FILE_APPEND | LOCK_EX);
+//            file_put_contents('translate.log', $string.PHP_EOL , FILE_APPEND | LOCK_EX);
         }
 
         return $string;

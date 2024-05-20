@@ -1,9 +1,43 @@
-Chat List|Список Чатів
-Message id|Номер Листа
-User Name|Ім`я користувача
-Title|Заголовок
-Message|Повідомлення
-Created At|Дата створення
-Message length must be not less then 2 characters!|Повідомлення має містити мінімум 2 символи!
-Name must be from 2 to 140 chars!|Імя має бути від 2 до 140 символів!
-Title must be from 10 to 140 chars!|Заголовок має бути від 10 до 140 символів!
+Add message/&/Написати повідомлення
+Add/&/Написати
+Are you sure want to log out?/&/Ви справді бажаєте вийти з акаунту?
+Cancel/&/Ні, повернутись
+Chat List/&/Список повідомлень
+Class not found by this path \"/&/За вказаним шляхом не знайдено жодного класу: \"
+Confirm/&/Так, хочу
+Contacts/&/Контакти
+Created At/&/Дата написання
+Email field should not be empty!/&/Поле електронної адреси не може бути пустим!
+Email is not valid!/&/Некоректна адреса електронної пошти!
+Fields should not be empty/&/Поля не можуть бути пустими!
+Home/&/Головна
+Log in to post messages!/&/Щоб писати повідомлення необхідно ввійти до акаунту!
+Log in/&/Вхід в акаунт
+Log out/&/Вийти з акаунта
+Login field should not contain spaces!/&/Поле імені не може містити пробілів!
+Managers are not allowed to post messages!/&/Менеджер не має прав для створення повідомлень!
+Maximal length for every field is 24 symbols (excepting email field)/&/Максимальна довжина кожного поля - 24 символи (окрім поля електронної адреси)
+Message id/&/Номер Листа
+Message length must be not less then 2 characters!/&/Повідомлення повинно містити мінімум 2 символи!
+Message/&/Повідомлення
+Minimal length for every field is 3 symbols/&/Мінімальна довжина кожного поля - 3 символи
+Minimal length for password is 8 symbols/&/Мінімальна довжина паролю - 8 символів
+Name must be from 2 to 140 chars!/&/Ім'я повинно бути від 2 до 140 символів!
+Password is too short!/&/Пароль занадто короткий!
+Register/&/Реєстрація
+Role: /&/Роль:
+Save/&/Зберегти
+Something went wrong with your account!<br>Please wait, moderation will fix that as fast, as possible!/&/З вашим акаунтом сталась критична помилка!<br>Будь ласка, зачекайте - можерація це виправить так швидко, як тільки можливо!
+The message has been successfully added!/&/Повідомлення успішно записано!
+This email is already in use!/&/Ця адреса електронної пошти вже використовується!
+Title must be from 10 to 140 chars!/&/Заголовок повинен бути від 10 до 140 символів!
+Title/&/Заголовок
+User Name/&/Ім'я користувача
+User not found!/&/Користувача не знайдено!
+Username should not contain spaces/&/Ім'я користувача не може містити пробілів
+Wrong password!/&/Неправильний пароль!
+admin/&/адмін
+ field should not be empty!/&/-поле не може бути порожнім!
+ field value has wrong length!/&/-поле має значення, розмір якого не відповідає правилам!
+manager/&/менеджер
+user/&/користувач
