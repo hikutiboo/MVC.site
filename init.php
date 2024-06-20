@@ -12,3 +12,4 @@ const DB_HOST = 'localhost';
 const DB_DATABASE_NAME = 'mvc';
 const DB_USER = 'root';
 const DB_PASS = '';
+const CENSORSHIP_OPTIONS = 'mix';

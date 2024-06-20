@@ -23,6 +23,10 @@ return (function () {
             'controller' => 'Messages\Add'
         ],
         [
+            'regex' => '/^messages\/censorship\/?$/',
+            'controller' => 'Messages\Censorship'
+        ],
+        [
             'regex' => '/^accounts\/register\/?$/',
             'controller' => 'Accounts\Register'
         ],
@@ -41,6 +45,10 @@ return (function () {
         [
             'regex' => '/^terminal\/?$/',
             'controller' => 'Terminal\Terminal'
+        ],
+        [
+            'regex' => '/^contacts\/?$/',
+            'controller' => 'Contacts\Contacts'
         ]
     ];
 })();

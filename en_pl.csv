@@ -41,3 +41,26 @@ admin/&/administrator
  field value has wrong length!/&/ - to pole ma niepoprawną wartość długość!
 manager/&/menedżer
 user/&/użytkownik
+Page not found./&/Strona nie została znaleziona.
+Start from/&/Zacznij od
+main page/&/strony głównej
+Censorship management/&/Zarządzanie cenzurą
+Censorship/&/Сenzura
+Add new word to censorship/&/Dodaj nowe słowo do cenzury
+Censored Words:/&/Słowa ocenzurowane:
+Censored Messages:/&/Wiadomości ocenzurowane:
+Add to censorship/&/Dodaj do cenzury
+There is no censored words yet!/&/Nie ma jeszcze ocenzurowanych słów!
+Delete/&/Usuń
+Allow/&/Zezwalaj
+There is no censored messages yet!/&/Nie ma jeszcze ocenzurowanych wiadomości!
+Adding was successfully done, all words added!/&/Dodawanie powiodło się, wszystkie słowa zostały dodane!
+Regex should not contain any options!/&/Regex nie powinien zawierać żadnych opcji!
+Regex was not added, it's already in the list!/&/Regex nie został dodany, jest już na liście!
+Some words was not added, check the list or try again try again!/&/Niektóre słowa nie zostały dodane, sprawdź listę lub spróbuj ponownie!
+Message allowed successfully!/&/Wiadomość dopuszczona pomyślnie!
+Failed to restore message, please try again later/&/Nie udało się przywrócić wiadomości, spróbuj ponownie później
+Message deleted successfully!/&/Wiadomość usunięta pomyślnie!
+Failed to delete message, please try again later/&/Nie udało się usunąć wiadomości, spróbuj ponownie później
+This message did not pass censorship and was sent to the administration for review!/&/Ta wiadomość nie przeszła cenzury i została wysłana do administracji w celu sprawdzenia!
+About MVC/&/Informacja o MVC

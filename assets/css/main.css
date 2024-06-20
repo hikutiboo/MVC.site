@@ -1,123 +1,154 @@
 html {
-	position: relative;
-	min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-	margin-bottom: 60px;
+    margin-bottom: 60px;
 }
 
 .container {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.page-container > * {
+    width: 100%;
 }
 
 .site-footer {
-	position: absolute;
-	bottom: 0;
-	width: 100%;
-	height: 50px;
-	line-height: 50px;
-	background-color: #117a8b
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    background-color: #117a8b
 }
 
-.site-header{
-	background-color: #117a8b;
-	padding: 10px 0;
+.site-header {
+    background-color: #117a8b;
+    padding: 10px 0;
 }
 
-.site-nav{
-	background-color: #eee;
-	padding: 5px 0;
+.site-nav {
+    background-color: #eee;
+    padding: 5px 0;
 }
 
-.site-content{
-	padding: 10px 0;
+.site-content {
+    padding: 10px 0;
 }
 
 ul > li {
-	display: flow-root;
+    display: flow-root;
 }
 
 a:not(#forget_password) {
-	color: unset;
+    color: unset;
 }
 
 p {
-	padding: 0;
-	margin: 0;
+    padding: 0;
+    margin: 0;
 }
 
 #screenLocker {
-	width: 100%;
-	height: 100vh;
-	position: fixed;
-	left: 0;
-	top: 0;
-	background-color: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.6);
 }
 
 .console-container {
-	width: 60%;
-	height: 80%;
-	padding: 25px 50px;
-	background-color: #e6e6e6;
-	border-radius: 20px;
-	position: fixed;
-	left: 50%;
-	top: 50%;
-	transform: translate(-50%, -50%);
-	display: flex;
-	flex-direction: column;
-	gap: 25px;
+    width: 60%;
+    height: 80%;
+    padding: 25px 50px;
+    background-color: #e6e6e6;
+    border-radius: 20px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
 }
 
 #consoleBody {
-	padding: 5px 5px;
-	height: 100%;
-	background-color: #000000;
-	border-color: #000000;
-	color: white;
-	overflow-y: scroll;
+    padding: 5px 5px;
+    height: 100%;
+    background-color: #000000;
+    border-color: #000000;
+    color: white;
+    overflow-y: scroll;
 }
 
 #prevConsoleLines {
-	color: #cccccc;
+    color: #cccccc;
 }
 
 #commandLineContainer {
-	width: 100%;
-	display: flex;
+    width: 100%;
+    display: flex;
 }
 
 #consoleLine {
-	width: max-content;
-	background-color: hsla(0, 0%, 0%, 0);
-	border: none;
-	color: white;
-	flex-grow: 1;
+    width: max-content;
+    background-color: hsla(0, 0%, 0%, 0);
+    border: none;
+    color: white;
+    flex-grow: 1;
 }
 
 #consoleLine:focus {
-	outline: none;
+    outline: none;
 }
 
 .console-task {
-	color: deepskyblue;
+    color: deepskyblue;
 }
 
 .console-response {
-	color: greenyellow;
+    color: greenyellow;
 }
 
 .console-empty {
-	color: transparent;
+    color: transparent;
 }
 
 .logout-confirm-container {
-	display: flex;
-	flex-direction: row;
-	gap: 10px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+#censorship_page {
+    display: flex;
+    flex-direction: row;
+    gap: 4%;
+}
+
+.censored-word {
+    display: list-item;
+}
+
+.censorship-page-part {
+    width: 100%;
+}
+
+#censored_messages_list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contacts-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }

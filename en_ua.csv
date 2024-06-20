@@ -41,3 +41,26 @@ admin/&/адмін
  field value has wrong length!/&/-поле має значення, розмір якого не відповідає правилам!
 manager/&/менеджер
 user/&/користувач
+Page not found./&/Сторінку не знайдено.
+Start from/&/Почніть з
+main page/&/головної сторінки
+Censorship management/&/Керування цензурою
+Censorship/&/Цензура
+Add new word to censorship/&/Додати нове слово до цензури
+Censored Words:/&/Заборонені слова:
+Censored Messages:/&/Заборонені повідомлення:
+Add to censorship/&/Додати до цензури
+There is no censored words yet!/&/Цензурованих слів ще немає!
+Delete/&/Видалити
+Allow/&/Дозволити
+There is no censored messages yet!/&/Цензурованих повідомлень поки що немає!
+Adding was successfully done, all words added!/&/Додавання успішно виконано, всі слова додано!
+Regex should not contain any options!/&/Regex не повинен містити жодних опцій!
+Regex was not added, it's already in the list!/&/Regex не було додано, він вже є в списку!
+Some words was not added, check the list or try again try again!/&/Деякі слова не було додано, перевірте список або спробуйте ще раз!
+Message allowed successfully!/&/Повідомлення успішно дозволено!
+Failed to restore message, please try again later/&/Не вдалося відновити повідомлення, спробуйте пізніше
+Message deleted successfully!/&/Повідомлення успішно видалено!
+Failed to delete message, please try again later/&/Не вдалося видалити повідомлення, спробуйте пізніше
+This message did not pass censorship and was sent to the administration for review!/&/Це повідомлення не пройшло цензуру і відправлено на розгляд адміністрації!
+About MVC/&/Про MVC

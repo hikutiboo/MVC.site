@@ -6,7 +6,11 @@ class e404 extends \Controller\Controller
 {
     static public function run()
     {
-        $title = 'Error 404';
-        include('view/errors/v_404.php');
+        $viewData = new \Model\ViewData();
+
+        $viewData->addData([
+            'title' => \Bootstrap::__('Error 404'),
+        ]);
+        \Model\RenderHTMLPage::renderHTML(['view/errors/v_404.php'], $viewData);
     }
 }

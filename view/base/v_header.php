@@ -1,9 +1,10 @@
 <?php
-$role = setRole();
+$user = array_key_exists("user", $_SESSION) ? $_SESSION['user'] : [];
+$role = setRole($user);
 
-function setRole(): string
+function setRole($user): string
 {
-    if (!array_key_exists("role", $_SESSION['user'])) return '';
+    if (!array_key_exists("role", $user)) return '';
 
     return match ($_SESSION["user"]['role']) {
         1 => 'admin',
@@ -22,19 +23,19 @@ function setRole(): string
     <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/main.css">
 </head>
 <body>
-<?php if (key_exists('login', $_SESSION['user'] ?: []) && $_SESSION["user"]["role"] === 1) { ?>
+<?php if (key_exists('login', $user) && $_SESSION["user"]["role"] === 1) { ?>
     <script src="<?= BASE_URL ?>assets/js/adminConsole.js"></script>
 <?php } ?>
 <header class="site-header">
     <div class="container d-flex justify-content-between align-items-center">
         <div class="logo">
             <div class="logo__title h3">Lesson site</div>
-            <div class="logo__subtitle h6">About MVC</div>
+            <div class="logo__subtitle h6"><?= \Bootstrap::__("About MVC") ?></div>
         </div>
         <div class="account">
-            <?php if (key_exists('login', $_SESSION['user'] ?: [])) { ?>
+            <?php if (key_exists('login', $user)) { ?>
                 <div class="logo__title h3">
-                    <?= $_SESSION['user']["login"] ?? '' ?>
+                    <?= $user["login"] ?? '' ?>
                     <a href="<?= BASE_URL ?>accounts/logout" class="btn btn-danger" id="logout">
                         <?= \Bootstrap::__("Log out") ?>
                     </a>
