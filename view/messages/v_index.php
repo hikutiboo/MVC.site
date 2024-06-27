@@ -1,6 +1,6 @@
 <?php if ($viewData->getData('successText')): ?>
     <div class="alert alert-success" role="alert">
-        <?= \Bootstrap::__('The message has been successfully added!') ?>
+        <?= $viewData->getData('successText') ?>
     </div>
 <?php endif; ?>
 <?php if ($viewData->getData('censorshipText')): ?>
@@ -19,19 +19,31 @@
                     :&nbsp;</strong></label><em><?= $message['message'] ?></em><br>
             <label><strong><?= \Bootstrap::__('Created At') ?>
                     :&nbsp;</strong></label><em><?= $message['created_at'] ?></em><br>
-            <?php if (
-                ($_SESSION['user']['role'] ?? 3) < 3 ||
-                ($_SESSION['user']['email'] ?? null) === $message['author_email']
-            ) { ?>
-                <form method="post">
-                    <button class="btn btn-outline-danger"
-                            type="submit"
-                            name="delete<?= ($_SESSION['user']['email'] ?? null) === $message['author_email'] ? "d-by-yourself" : '' ?>"
-                            value="<?= $message['id'] ?>">
-                        <?= \Bootstrap::__('Delete') ?>
-                    </button>
-                </form>
-            <?php } ?>
+            <div class="message-buttons">
+                <?php if (
+                    ($_SESSION['user']['role'] ?? 3) < 3 ||
+                    ($_SESSION['user']['email'] ?? null) === $message['author_email']
+                ) { ?>
+                    <form method="post">
+                        <button class="btn btn-outline-danger"
+                                type="submit"
+                                name="delete<?= ($_SESSION['user']['email'] ?? null) === $message['author_email'] ? "d_by_yourself" : '' ?>"
+                                value="<?= $message['id'] ?>">
+                            <?= \Bootstrap::__('Delete') ?>
+                        </button>
+                    </form>
+                <?php } ?>
+                <?php if (($_SESSION['user']['email'] ?? null) === $message['author_email']) { ?>
+                    <form method="post">
+                        <button class="btn btn-outline-warning"
+                                type="submit"
+                                name="edit"
+                                value="<?= $message['id'] ?>">
+                            <?= \Bootstrap::__('Edit') ?>
+                        </button>
+                    </form>
+                <?php } ?>
+            </div>
             <hr>
         </li>
     <?php endforeach; ?>

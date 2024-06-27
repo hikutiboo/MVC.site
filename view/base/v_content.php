@@ -20,9 +20,9 @@
         </ul>
         <form method="get">
             <select name="ln" onchange="this.form.submit()">
-                <option value="en" <?= $ln == "en" ? "selected" : '' ?>>English</option>
-                <option value="ua" <?= $ln == "ua" ? "selected" : '' ?>>Ukrainian</option>
-                <option value="pl" <?= $ln == "pl" ? "selected" : '' ?>>Polish</option>
+                <option value="en" <?= $ln === "en" ? "selected" : '' ?>>English</option>
+                <option value="ua" <?= $ln === "ua" ? "selected" : '' ?>>Ukrainian</option>
+                <option value="pl" <?= $ln === "pl" ? "selected" : '' ?>>Polish</option>
             </select>
         </form>
     </div>

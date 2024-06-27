@@ -3,8 +3,6 @@ declare(strict_types=1);
 
 namespace Model;
 
-use http\Exception;
-
 /**
  * @by ProfStep, inc. 23.12.2020
  * @website: https://profstep.com
@@ -80,6 +78,25 @@ class Messages
 
         return $errors;
     }
+    
+    static public function editingValidate(array &$fields): array
+    {
+        $errors = [];
+        $titleLen = mb_strlen($fields['title'], 'UTF-8');
+
+        if (mb_strlen($fields['message'], 'UTF-8') < 2) {
+            $errors[] = \Bootstrap::__('Message length must be not less then 2 characters!');
+        }
+
+        if ($titleLen < 10 || $titleLen > 140) {
+            $errors[] = \Bootstrap::__('Title must be from 10 to 140 chars!');
+        }
+
+        $fields['title'] = htmlspecialchars($fields['title']);
+        $fields['message'] = htmlspecialchars($fields['message']);
+
+        return $errors;
+    }
 
     static public function moderateMessage(\mysqli $connect, int $id, int $status = 1): void
     {
@@ -101,8 +118,8 @@ class Messages
         if (empty(trim($text))) return ["type" => "danger", "text" => $message];
         else $message = ["type" => "success", "text" => \Bootstrap::__("Adding was successfully done, all words added!")];
 
-        if (preg_match("/^\/.+\/[a-z]*$/i", $text)) {
-            if (!preg_match("/^\/.+\/$/i", $text)) {
+        if (preg_match("/^\/.*\/[a-z]*$/i", $text)) {
+            if (!preg_match("/^\/.*\/$/i", $text)) {
                 return ["type" => "danger", "text" => \Bootstrap::__("Regex should not contain any options!")];
             }
             if (self::checkCensoredWordExist($connect, $text)) {
@@ -135,12 +152,22 @@ class Messages
         return !empty($result_arr);
     }
 
+    static public function deleteCensoredWord(\mysqli $connect, int $id): array
+    {
+        $queryStmt = mysqli_prepare($connect, "DELETE FROM censored_words WHERE id = ?");
+        mysqli_stmt_bind_param($queryStmt, "i", $id);
+        mysqli_stmt_execute($queryStmt);
+        if (!mysqli_error($connect)) {
+            return ["type" => "success", "text" => \Bootstrap::__("Word deleted successfully!")];
+        }
+        return ["type" => "danger", "text" => \Bootstrap::__("Failed to delete word, please try again later")];
+    }
+
     static public function allowMessage(\mysqli $connect, string $id): array
     {
         $queryStmt = mysqli_prepare($connect, "UPDATE messages SET status = 3 WHERE id = ?");
         mysqli_stmt_bind_param($queryStmt, "i", $id);
         mysqli_stmt_execute($queryStmt);
-        var_dump(!mysqli_error($connect));
         if (!mysqli_error($connect)) {
             return ["type" => "success", "text" => \Bootstrap::__("Message allowed successfully!")];
         }
@@ -152,7 +179,6 @@ class Messages
         $queryStmt = mysqli_prepare($connect, "UPDATE messages SET status = 2 WHERE id = ?");
         mysqli_stmt_bind_param($queryStmt, "i", $id);
         mysqli_stmt_execute($queryStmt);
-        var_dump(!mysqli_error($connect));
         if (!mysqli_error($connect)) {
             return ["type" => "success", "text" => \Bootstrap::__("Message deleted successfully!")];
         }
@@ -186,5 +212,16 @@ class Messages
             $result = '/' . $string . '/' . $options;
         }
         return $result;
+    }
+
+    static public function editMessage(\mysqli $connect, int $id, array $fields, int $status = 0): array
+    {
+        $queryStmt = mysqli_prepare($connect, "UPDATE messages SET title = ?, message = ?, status = ? WHERE id = ?");
+        mysqli_stmt_bind_param($queryStmt, "ssii", $fields["title"], $fields["message"], $status, $id);
+        mysqli_stmt_execute($queryStmt);
+        if (!mysqli_error($connect)) {
+            return ["success" => true, "message" => \Bootstrap::__("Message successfully edited!")];
+        }
+        return ["success" => false, "message" => \Bootstrap::__("Something went wrong, message was not edited!")];
     }
 }

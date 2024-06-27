@@ -13,8 +13,8 @@ class Bootstrap
         $file = "en_$ln.csv";
 
         if($ln && isset($_SESSION['ln']) && $_SESSION['ln'] != $ln || !isset($_SESSION['translate'])) {
+            $_SESSION['ln'] = $ln;
             if(file_exists($file)) {
-                $_SESSION['ln'] = $ln;
                 $_SESSION['translate'] = file($file);
             } else {
                 unset($_SESSION['translate']);

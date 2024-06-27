@@ -136,6 +136,13 @@ p {
     display: list-item;
 }
 
+.censored-word-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+}
+
 .censorship-page-part {
     width: 100%;
 }
@@ -151,4 +158,9 @@ p {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+}
+
+.message-buttons {
+    display: flex;
+    gap: 10px;
 }

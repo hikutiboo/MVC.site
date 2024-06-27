@@ -2,9 +2,7 @@
 
 namespace Controller\Contacts;
 
-use Controller\Controller;
-
-class Contacts extends Controller
+class Contacts extends \Controller\Controller
 {
     static public function run()
     {

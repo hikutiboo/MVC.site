@@ -64,7 +64,19 @@ if ($alert) {
         <h3><?= \Bootstrap::__("Censored Words:") ?></h3>
         <ul id="censored_words_list">
             <?php foreach ($viewData->getData('words') as $word): ?>
-                <li class="censored-word"> <?= mb_strtolower($word['word']) ?> </li>
+                <li class="censored-word">
+                    <div class="censored-word-container">
+                        <?= mb_strtolower($word['word']) ?>
+                        <form method="POST">
+                            <button class="btn btn-outline-danger"
+                                    type="submit"
+                                    name="delete_word"
+                                    value="<?= $word['id'] ?>">
+                                X
+                            </button>
+                        </form>
+                    </div>
+                </li>
             <?php endforeach; ?>
         </ul>
     </div>

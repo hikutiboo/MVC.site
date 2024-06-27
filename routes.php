@@ -49,6 +49,10 @@ return (function () {
         [
             'regex' => '/^contacts\/?$/',
             'controller' => 'Contacts\Contacts'
+        ],
+        [
+            'regex' => '/^messages\/edit\/?$/',
+            'controller' => 'Messages\Edit'
         ]
     ];
 })();
